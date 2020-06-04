@@ -13,12 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-        
     }
 
     private func setUpView() {
         navigationItem.title = "Home"
     }
-
 }
 
