@@ -18,5 +18,6 @@ class ViewController: UIViewController {
     private func setUpView() {
         navigationItem.title = "Home"
     }
+
 }
 
