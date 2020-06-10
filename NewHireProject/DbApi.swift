@@ -17,7 +17,6 @@ class DbApi {
    
     private init() {
         ref = Database.database().reference(withPath: "posts")
-        
     }
     
     func create(authorName: String, authorEmail: String, postName: String, postDescription: String, authorRef: String, date: String) {
@@ -31,6 +30,17 @@ class DbApi {
         postRef.setValue(postItem.toAnyObject())
     }
     
+    func create(postItem: Posts) {
+//        // 1
+//        let postItem = Posts(authorName, authorEmail, postName, postDescription, authorRef, date)
+        
+        // 2
+        let postRef = self.ref.child(postItem.authorRef.lowercased())
+        
+        // 3
+        postRef.setValue(postItem.toAnyObject())
+    }
+    
     func read( completion: @escaping () -> () ) {
         posts = []
         self.ref.observe(.value, with: {snapshot in
@@ -38,7 +48,7 @@ class DbApi {
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
-                        let post = Posts("0","0","0","0","0","0")
+                        let post = Posts()
                         post.authorEmail = postDict["authorEmail"] as? String
                         post.authorName = postDict["authorName"] as? String
                         post.authorRef = postDict["authorRef"] as? String

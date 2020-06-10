@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5110D25524881B4200ADAA88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5110D25424881B4100ADAA88 /* GoogleService-Info.plist */; };
+		5139987E24904EFC0034693F /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5139987D24904EFC0034693F /* InfoView.xib */; };
+		5139988024904F0C0034693F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139987F24904F0C0034693F /* InfoView.swift */; };
+		513998822490503A0034693F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513998812490503A0034693F /* InfoViewController.swift */; };
 		516D08D2248EDF7A00EA155A /* DbApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08D1248EDF7A00EA155A /* DbApi.swift */; };
 		516D08D6248EE8FA00EA155A /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08D5248EE8FA00EA155A /* Posts.swift */; };
 		516D08DD248F1F4300EA155A /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08DB248F1F4300EA155A /* TableViewCell1.swift */; };
@@ -23,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		5110D25424881B4100ADAA88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5139987D24904EFC0034693F /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		5139987F24904F0C0034693F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		513998812490503A0034693F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		516D08D1248EDF7A00EA155A /* DbApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbApi.swift; sourceTree = "<group>"; };
 		516D08D5248EE8FA00EA155A /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		516D08DB248F1F4300EA155A /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 				516D08D5248EE8FA00EA155A /* Posts.swift */,
 				516D08DB248F1F4300EA155A /* TableViewCell1.swift */,
 				516D08DC248F1F4300EA155A /* TableViewCell1.xib */,
+				5139987D24904EFC0034693F /* InfoView.xib */,
+				5139987F24904F0C0034693F /* InfoView.swift */,
+				513998812490503A0034693F /* InfoViewController.swift */,
 			);
 			path = NewHireProject;
 			sourceTree = "<group>";
@@ -166,6 +175,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5139987E24904EFC0034693F /* InfoView.xib in Resources */,
 				516D08DE248F1F4300EA155A /* TableViewCell1.xib in Resources */,
 				6F0BB6DA2487E3E300045139 /* LaunchScreen.storyboard in Resources */,
 				5110D25524881B4200ADAA88 /* GoogleService-Info.plist in Resources */,
@@ -229,6 +239,8 @@
 				516D08DD248F1F4300EA155A /* TableViewCell1.swift in Sources */,
 				516D08D2248EDF7A00EA155A /* DbApi.swift in Sources */,
 				6F0BB6D02487E3E200045139 /* SceneDelegate.swift in Sources */,
+				513998822490503A0034693F /* InfoViewController.swift in Sources */,
+				5139988024904F0C0034693F /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

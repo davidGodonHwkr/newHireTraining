@@ -9,8 +9,10 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
-
+    var currentRow: Int! = 0
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -42,10 +44,12 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
         let post = DbApi.shared.posts[indexPath.row]
-        
+
         cell.authorLabel.text = post.authorName
         cell.dateLabel.text = post.date
         cell.postLabel.text = post.postName
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
+//        cell.textLabel?.text = "\(post.authorName!) \(post.date!) \(post.postName!)"
         
         return cell
     }
@@ -63,6 +67,41 @@ class TableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        currentRow = indexPath.row
+        self.performSegue(withIdentifier: "InfoSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let secondVC: InfoViewController = segue.destination as! InfoViewController
+        secondVC.rowSelected = currentRow
+    }
+    
+    @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Create Post", message: "Please fill in inputs", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "post name"
+        }
+        alertController.addTextField { textField in
+            textField.placeholder = "post description"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+            print("cancel action")
+        }
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            print("ok action")
+            let textfield1 = alertController.textFields![0]
+            let textfield2 = alertController.textFields![1]
+            // add it to singleton and database
+            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", "today")
+            DbApi.shared.posts.append(newPost)
+            DbApi.shared.create(postItem: newPost)
+            self.tableView.reloadData()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 

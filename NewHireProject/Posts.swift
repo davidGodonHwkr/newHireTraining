@@ -18,6 +18,10 @@ class Posts {
     
     var dictionary: [String: String] = [:]
     
+    init() {
+        
+    }
+    
     init(_ name:String, _ email:String, _ post:String, _ description:String, _ ref:String, _ date:String) {
         self.authorName = name
         self.authorEmail = email
