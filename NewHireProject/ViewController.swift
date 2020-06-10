@@ -18,8 +18,9 @@ class TableViewController: UITableViewController {
 //        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         setUpView()
-        DbApi.shared.create(authorName: "Jung", authorEmail: "email@email.com", postName: "hello", postDescription: "first post", authorRef: "ref", date: "today")
-        DbApi.shared.create(authorName: "Choi", authorEmail: "email2@email.com", postName: "hi", postDescription: "second post", authorRef: "ref2", date: "tomorrow")
+        tableView.register(UINib(nibName: "TableViewCell1", bundle: nil), forCellReuseIdentifier: "TableViewCell1")
+//        DbApi.shared.create(authorName: "Jung", authorEmail: "email@email.com", postName: "hello", postDescription: "first post", authorRef: "ref", date: "today")
+//        DbApi.shared.create(authorName: "Choi", authorEmail: "email2@email.com", postName: "hi", postDescription: "second post", authorRef: "ref2", date: "tomorrow")
         //DispatchQueue.main.async {
             DbApi.shared.read() {
                 self.tableView.reloadData()
@@ -42,14 +43,16 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
+   //     let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
         let post = DbApi.shared.posts[indexPath.row]
+//
 
-        cell.authorLabel.text = post.authorName
-        cell.dateLabel.text = post.date
-        cell.postLabel.text = post.postName
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
-//        cell.textLabel?.text = "\(post.authorName!) \(post.date!) \(post.postName!)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell1", for: indexPath) as! TableViewCell1
+        
+                cell.authorLabel.text = post.authorName
+                cell.dateLabel.text = post.date
+                cell.postLabel.text = post.postName
+ //       cell.textLabel?.text = "\(post.authorName!) \(post.date!) \(post.postName!)"
         
         return cell
     }
@@ -64,6 +67,7 @@ class TableViewController: UITableViewController {
             DbApi.shared.delete(authorRef: DbApi.shared.posts[indexPath.row].authorRef)
             DbApi.shared.posts.remove(at: indexPath.row)
             print("after removing count: \(DbApi.shared.posts.count)")
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
             self.tableView.reloadData()
         }
     }
