@@ -19,23 +19,29 @@ class DbApi {
         ref = Database.database().reference(withPath: "posts")
     }
     
-    func create(authorName: String, authorEmail: String, postName: String, postDescription: String, authorRef: String, date: String) {
-        // 1
-        let postItem = Posts(authorName, authorEmail, postName, postDescription, authorRef, date)
-        
-        // 2
-        let postRef = self.ref.child(authorRef.lowercased())
-        
-        // 3
-        postRef.setValue(postItem.toAnyObject())
-    }
+//    func create(authorName: String, authorEmail: String, postName: String, postDescription: String, authorRef: String, date: String) {
+//        // 1
+//        let postItem = Posts(authorName, authorEmail, postName, postDescription, authorRef, date)
+//
+//        // 2
+//        let postRef = self.ref.child(self.ref.childByAutoId().key!)
+//      //  let postRef = self.ref.child(authorRef.lowercased())
+//
+//        // 3
+//        postRef.setValue(postItem.toAnyObject())
+//    }
     
     func create(postItem: Posts) {
 //        // 1
 //        let postItem = Posts(authorName, authorEmail, postName, postDescription, authorRef, date)
-        
+        let keyValue = self.ref.childByAutoId().key!
+        // add it to the array
+        postItem.key = keyValue
+        let newPostItem = postItem
+        self.posts.append(newPostItem)
         // 2
-        let postRef = self.ref.child(postItem.authorRef.lowercased())
+        let postRef = self.ref.child(keyValue)
+        //let postRef = self.ref.child(postItem.authorRef.lowercased())
         
         // 3
         postRef.setValue(postItem.toAnyObject())
@@ -55,6 +61,7 @@ class DbApi {
                         post.date = postDict["date"] as? String
                         post.postDescription = postDict["postDescription"] as? String
                         post.postName = postDict["postName"] as? String
+                        post.key = postDict["key"] as? String
                         self.posts.append(post)
                     }
                 }
@@ -64,14 +71,15 @@ class DbApi {
         
     }
     
-    func update(authorRef: String, field: String, newValue: String) {
-        let postRef = self.ref.child(authorRef.lowercased())
+    func update(key: String, field: String, newValue: String) {
+        let postRef = self.ref.child(key)
         
          // 3
         postRef.updateChildValues([field:newValue])
     }
     
-    func delete(authorRef: String) {
-        self.ref.child(authorRef).removeValue()
+    func delete(key: String) {
+        print("DELETING, here is key: \(key)")
+        self.ref.child(key).removeValue()
     }
 }

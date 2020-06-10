@@ -64,9 +64,8 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             // handle delete (by removing the data from your array and updating the tableview)
-            DbApi.shared.delete(authorRef: DbApi.shared.posts[indexPath.row].authorRef)
+            DbApi.shared.delete(key: DbApi.shared.posts[indexPath.row].key)
             DbApi.shared.posts.remove(at: indexPath.row)
-            print("after removing count: \(DbApi.shared.posts.count)")
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             self.tableView.reloadData()
         }
@@ -98,8 +97,8 @@ class TableViewController: UITableViewController {
             let textfield1 = alertController.textFields![0]
             let textfield2 = alertController.textFields![1]
             // add it to singleton and database
-            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", "today")
-            DbApi.shared.posts.append(newPost)
+            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", "today", "")
+           // DbApi.shared.posts.append(newPost)
             DbApi.shared.create(postItem: newPost)
             self.tableView.reloadData()
         }
