@@ -11,7 +11,7 @@ import UIKit
 class TableViewController: UITableViewController {
     var currentRow: Int! = 0
     @IBOutlet weak var addButton: UIBarButtonItem!
-    
+    var posts = [Posts]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +22,13 @@ class TableViewController: UITableViewController {
 //        DbApi.shared.create(authorName: "Jung", authorEmail: "email@email.com", postName: "hello", postDescription: "first post", authorRef: "ref", date: "today")
 //        DbApi.shared.create(authorName: "Choi", authorEmail: "email2@email.com", postName: "hi", postDescription: "second post", authorRef: "ref2", date: "tomorrow")
         //DispatchQueue.main.async {
-            DbApi.shared.read() {
-                self.tableView.reloadData()
+            DbApi.shared.read() { posts in
+                DispatchQueue.main.async {[weak self] in
+                    if let strongSelf = self {
+                        strongSelf.posts = posts
+                        strongSelf.tableView.reloadData()
+                    }
+                }
             }
         //}
         
@@ -37,14 +42,14 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("count of dbapi.post \(DbApi.shared.posts.count)")
-        if DbApi.shared.posts.count > 0 {
-            return DbApi.shared.posts.count
+        if posts.count > 0 {
+            return posts.count
         } else {return 0}
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    //     let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
-        let post = DbApi.shared.posts[indexPath.row]
+        let post = posts[indexPath.row]
 //
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell1", for: indexPath) as! TableViewCell1
@@ -64,10 +69,12 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             // handle delete (by removing the data from your array and updating the tableview)
-            DbApi.shared.delete(key: DbApi.shared.posts[indexPath.row].key)
-            DbApi.shared.posts.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-            self.tableView.reloadData()
+            DbApi.shared.delete(key: posts[indexPath.row].key) { posts in
+                self.posts = posts
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.reloadData()
+            }
+         //   posts.remove(at: indexPath.row)
         }
     }
     
@@ -79,6 +86,7 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let secondVC: InfoViewController = segue.destination as! InfoViewController
         secondVC.rowSelected = currentRow
+        secondVC.posts = self.posts
     }
     
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
@@ -99,8 +107,10 @@ class TableViewController: UITableViewController {
             // add it to singleton and database
             let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", "today", "")
            // DbApi.shared.posts.append(newPost)
-            DbApi.shared.create(postItem: newPost)
-            self.tableView.reloadData()
+            DbApi.shared.create(postItem: newPost) { posts in
+                self.posts = posts
+                self.tableView.reloadData()
+            }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)

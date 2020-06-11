@@ -16,9 +16,9 @@ class InfoView: UIView {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var authorEmailLabel: UILabel!
     
-    func fillLabels(rowSelected: Int?) {
+    func fillLabels(rowSelected: Int?, posts: [Posts]) {
         if let row = rowSelected {
-            let post: Posts! = DbApi.shared.posts[row]
+            let post: Posts! = posts[row]
             postNameLabel?.text = post.postName
             descriptionLabel?.text = post.postDescription
             dateLabel?.text = post.date

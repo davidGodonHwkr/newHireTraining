@@ -13,7 +13,7 @@ import FirebaseDatabase
 class DbApi {
     static let shared = DbApi()
     var ref: DatabaseReference!
-    var posts = [Posts]()
+  //  var posts = [Posts]()
    
     private init() {
         ref = Database.database().reference(withPath: "posts")
@@ -31,25 +31,28 @@ class DbApi {
 //        postRef.setValue(postItem.toAnyObject())
 //    }
     
-    func create(postItem: Posts) {
+    func create(postItem: Posts, completion: @escaping ([Posts]) -> ()) {
 //        // 1
 //        let postItem = Posts(authorName, authorEmail, postName, postDescription, authorRef, date)
         let keyValue = self.ref.childByAutoId().key!
         // add it to the array
         postItem.key = keyValue
-        let newPostItem = postItem
-        self.posts.append(newPostItem)
+       // let newPostItem = postItem
+        //self.posts.append(newPostItem)
         // 2
         let postRef = self.ref.child(keyValue)
         //let postRef = self.ref.child(postItem.authorRef.lowercased())
         
         // 3
         postRef.setValue(postItem.toAnyObject())
+        self.read() { posts in
+            completion(posts)
+        }
     }
     
-    func read( completion: @escaping () -> () ) {
-        posts = []
-        self.ref.observe(.value, with: {snapshot in
+    func read(completion: @escaping ([Posts]) -> () ) {
+        var posts = [Posts]()
+        self.ref.observeSingleEvent(of: .value, with: {snapshot in
             //print("count: " + String(snapshot.childrenCount))
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots {
@@ -62,11 +65,11 @@ class DbApi {
                         post.postDescription = postDict["postDescription"] as? String
                         post.postName = postDict["postName"] as? String
                         post.key = postDict["key"] as? String
-                        self.posts.append(post)
+                        posts.append(post)
                     }
                 }
             }
-            completion()
+            completion(posts)
         })
         
     }
@@ -78,8 +81,11 @@ class DbApi {
         postRef.updateChildValues([field:newValue])
     }
     
-    func delete(key: String) {
+    func delete(key: String, completion: @escaping ([Posts]) -> ()) {
         print("DELETING, here is key: \(key)")
         self.ref.child(key).removeValue()
+        self.read() { posts in
+            completion(posts)
+        }
     }
 }

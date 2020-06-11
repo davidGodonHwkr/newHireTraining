@@ -10,13 +10,14 @@ import UIKit
 
 class InfoViewController: UIViewController {
     var rowSelected = 0
+    var posts = [Posts]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         if let infoView = Bundle.main.loadNibNamed("InfoView", owner: self, options: nil)?.first as? InfoView {
-            infoView.fillLabels(rowSelected: rowSelected)
+            infoView.fillLabels(rowSelected: rowSelected, posts: posts)
             self.view.addSubview(infoView)
         }
     }
