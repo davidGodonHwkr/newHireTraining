@@ -3,10 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5110D25524881B4200ADAA88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5110D25424881B4100ADAA88 /* GoogleService-Info.plist */; };
+		5139987E24904EFC0034693F /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5139987D24904EFC0034693F /* InfoView.xib */; };
+		5139988024904F0C0034693F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139987F24904F0C0034693F /* InfoView.swift */; };
+		513998822490503A0034693F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513998812490503A0034693F /* InfoViewController.swift */; };
+		516D08D2248EDF7A00EA155A /* DbApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08D1248EDF7A00EA155A /* DbApi.swift */; };
+		516D08D6248EE8FA00EA155A /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08D5248EE8FA00EA155A /* Posts.swift */; };
+		516D08DD248F1F4300EA155A /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08DB248F1F4300EA155A /* TableViewCell1.swift */; };
+		516D08DE248F1F4300EA155A /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516D08DC248F1F4300EA155A /* TableViewCell1.xib */; };
+		56FF8B93EAFDE9986FB9DF88 /* Pods_NewHireProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEB58D6E6066E468C8376AB /* Pods_NewHireProject.framework */; };
 		6F0BB6CE2487E3E200045139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BB6CD2487E3E200045139 /* AppDelegate.swift */; };
 		6F0BB6D02487E3E200045139 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BB6CF2487E3E200045139 /* SceneDelegate.swift */; };
 		6F0BB6D22487E3E200045139 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BB6D12487E3E200045139 /* ViewController.swift */; };
@@ -16,6 +25,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5110D25424881B4100ADAA88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5139987D24904EFC0034693F /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
+		5139987F24904F0C0034693F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		513998812490503A0034693F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		516D08D1248EDF7A00EA155A /* DbApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbApi.swift; sourceTree = "<group>"; };
+		516D08D5248EE8FA00EA155A /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
+		516D08DB248F1F4300EA155A /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
+		516D08DC248F1F4300EA155A /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
 		6F0BB6CA2487E3E200045139 /* NewHireProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewHireProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0BB6CD2487E3E200045139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F0BB6CF2487E3E200045139 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +41,9 @@
 		6F0BB6D62487E3E300045139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F0BB6D92487E3E300045139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F0BB6DB2487E3E300045139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9380AEADD431989352DBB1ED /* Pods-NewHireProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewHireProject.debug.xcconfig"; path = "Target Support Files/Pods-NewHireProject/Pods-NewHireProject.debug.xcconfig"; sourceTree = "<group>"; };
+		CFD483117FD2D66277920A47 /* Pods-NewHireProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewHireProject.release.xcconfig"; path = "Target Support Files/Pods-NewHireProject/Pods-NewHireProject.release.xcconfig"; sourceTree = "<group>"; };
+		FEEB58D6E6066E468C8376AB /* Pods_NewHireProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewHireProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FF8B93EAFDE9986FB9DF88 /* Pods_NewHireProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3AA9274233B3EEDF8E1AEFEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FEEB58D6E6066E468C8376AB /* Pods_NewHireProject.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6F0BB6C12487E3E200045139 = {
 			isa = PBXGroup;
 			children = (
 				6F0BB6CC2487E3E200045139 /* NewHireProject */,
 				6F0BB6CB2487E3E200045139 /* Products */,
+				DC0BE05D27746396FAFA7A6E /* Pods */,
+				3AA9274233B3EEDF8E1AEFEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +87,7 @@
 		6F0BB6CC2487E3E200045139 /* NewHireProject */ = {
 			isa = PBXGroup;
 			children = (
+				5110D25424881B4100ADAA88 /* GoogleService-Info.plist */,
 				6F0BB6CD2487E3E200045139 /* AppDelegate.swift */,
 				6F0BB6CF2487E3E200045139 /* SceneDelegate.swift */,
 				6F0BB6D12487E3E200045139 /* ViewController.swift */,
@@ -63,8 +95,24 @@
 				6F0BB6D62487E3E300045139 /* Assets.xcassets */,
 				6F0BB6D82487E3E300045139 /* LaunchScreen.storyboard */,
 				6F0BB6DB2487E3E300045139 /* Info.plist */,
+				516D08D1248EDF7A00EA155A /* DbApi.swift */,
+				516D08D5248EE8FA00EA155A /* Posts.swift */,
+				516D08DB248F1F4300EA155A /* TableViewCell1.swift */,
+				516D08DC248F1F4300EA155A /* TableViewCell1.xib */,
+				5139987D24904EFC0034693F /* InfoView.xib */,
+				5139987F24904F0C0034693F /* InfoView.swift */,
+				513998812490503A0034693F /* InfoViewController.swift */,
 			);
 			path = NewHireProject;
+			sourceTree = "<group>";
+		};
+		DC0BE05D27746396FAFA7A6E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9380AEADD431989352DBB1ED /* Pods-NewHireProject.debug.xcconfig */,
+				CFD483117FD2D66277920A47 /* Pods-NewHireProject.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +122,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F0BB6DE2487E3E300045139 /* Build configuration list for PBXNativeTarget "NewHireProject" */;
 			buildPhases = (
+				86364000614A6BF6B7CECC9B /* [CP] Check Pods Manifest.lock */,
 				6F0BB6C62487E3E200045139 /* Sources */,
 				6F0BB6C72487E3E200045139 /* Frameworks */,
 				6F0BB6C82487E3E200045139 /* Resources */,
+				AF0A557712B3F01AB812CA19 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,7 +175,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5139987E24904EFC0034693F /* InfoView.xib in Resources */,
+				516D08DE248F1F4300EA155A /* TableViewCell1.xib in Resources */,
 				6F0BB6DA2487E3E300045139 /* LaunchScreen.storyboard in Resources */,
+				5110D25524881B4200ADAA88 /* GoogleService-Info.plist in Resources */,
 				6F0BB6D72487E3E300045139 /* Assets.xcassets in Resources */,
 				6F0BB6D52487E3E200045139 /* Main.storyboard in Resources */,
 			);
@@ -133,14 +186,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		86364000614A6BF6B7CECC9B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NewHireProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF0A557712B3F01AB812CA19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewHireProject/Pods-NewHireProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NewHireProject/Pods-NewHireProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewHireProject/Pods-NewHireProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6F0BB6C62487E3E200045139 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6F0BB6D22487E3E200045139 /* ViewController.swift in Sources */,
+				516D08D6248EE8FA00EA155A /* Posts.swift in Sources */,
 				6F0BB6CE2487E3E200045139 /* AppDelegate.swift in Sources */,
+				516D08DD248F1F4300EA155A /* TableViewCell1.swift in Sources */,
+				516D08D2248EDF7A00EA155A /* DbApi.swift in Sources */,
 				6F0BB6D02487E3E200045139 /* SceneDelegate.swift in Sources */,
+				513998822490503A0034693F /* InfoViewController.swift in Sources */,
+				5139988024904F0C0034693F /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,36 +382,40 @@
 		};
 		6F0BB6DF2487E3E300045139 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9380AEADD431989352DBB1ED /* Pods-NewHireProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PTP36Y7J8H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NewHireProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dlc.coreapp.NewHireProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		6F0BB6E02487E3E300045139 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFD483117FD2D66277920A47 /* Pods-NewHireProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PTP36Y7J8H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = NewHireProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dlc.coreapp.NewHireProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
