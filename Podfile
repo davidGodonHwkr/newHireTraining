@@ -9,5 +9,7 @@ target 'NewHireProject' do
   pod 'Firebase/Core'
   pod 'Firebase'
   pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
   
 end

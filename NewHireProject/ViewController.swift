@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class TableViewController: UITableViewController {
     var currentRow: Int! = 0
+    @IBOutlet weak var signOutButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     var posts = [Posts]()
     
@@ -104,8 +107,12 @@ class TableViewController: UITableViewController {
             print("ok action")
             let textfield1 = alertController.textFields![0]
             let textfield2 = alertController.textFields![1]
+            // find current date
+            let date = Date()
+           // let calendar = Calendar.current
+            let currDate = date.string(format: "yyyy-MM-dd")
             // add it to singleton and database
-            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", "today", "")
+            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", currDate, "")
            // DbApi.shared.posts.append(newPost)
             DbApi.shared.create(postItem: newPost) { posts in
                 self.posts = posts
@@ -115,6 +122,16 @@ class TableViewController: UITableViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func clickedSignOut(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
