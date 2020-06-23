@@ -16,6 +16,7 @@ class Posts {
     var authorRef: String!
     var date: String!
     var key: String!
+    var displayName: String!
     
     var dictionary: [String: String] = [:]
     
@@ -23,7 +24,7 @@ class Posts {
         
     }
     
-    init(_ name:String, _ email:String, _ post:String, _ description:String, _ ref:String, _ date:String, _ keyValue: String) {
+    init(_ name:String, _ email:String, _ post:String, _ description:String, _ ref:String, _ date:String, _ keyValue: String, _ display: String) {
         self.authorName = name
         self.authorEmail = email
         self.postName = post
@@ -31,6 +32,7 @@ class Posts {
         self.authorRef = ref
         self.date = date
         self.key = keyValue
+        self.displayName = display
     }
     
     func toAnyObject() -> [String: String] {
@@ -41,6 +43,7 @@ class Posts {
         dictionary["authorRef"] = authorRef
         dictionary["date"] = date
         dictionary["key"] = key
+        dictionary["displayName"] = displayName
         return dictionary
     }
 }

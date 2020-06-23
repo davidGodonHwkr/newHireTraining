@@ -23,7 +23,7 @@ class CreateAccountViewController: UIViewController {
     
     @IBAction func confirmAction(_ sender: Any) {
         if let name = displayNameTextField.text {
-            FirestoreApi.shared.create(collection: "users", data: ["email": email!, "displayName": name, "authID": authID!])
+            FirestoreApi.shared.create(collection: "users", data: ["email": email!, "displayName": name, "authID": authID!], documentName: authID!)
             UserSingleton.shared.user = User(e: email!, d: name, a: authID!)
             self.performSegue(withIdentifier: "createAccountToMain", sender: self)
         }

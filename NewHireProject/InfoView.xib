@@ -44,6 +44,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="displayName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xf3-lj-m8I">
+                    <rect key="frame" x="5" y="232" width="99" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -64,6 +71,7 @@
                 <outlet property="authorNameLabel" destination="39W-8a-zHx" id="eUr-Tt-EAf"/>
                 <outlet property="dateLabel" destination="30A-27-M2W" id="gI6-nQ-rAj"/>
                 <outlet property="descriptionLabel" destination="BuW-wg-tbx" id="44c-ag-V91"/>
+                <outlet property="displayNameLabel" destination="Xf3-lj-m8I" id="5OC-0l-o5j"/>
                 <outlet property="postNameLabel" destination="fKw-wO-ntV" id="5Bs-cg-y4d"/>
             </connections>
             <point key="canvasLocation" x="139" y="83"/>

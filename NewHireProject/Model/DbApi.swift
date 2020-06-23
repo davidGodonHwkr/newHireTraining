@@ -65,6 +65,7 @@ class DbApi {
                         post.postDescription = postDict["postDescription"] as? String
                         post.postName = postDict["postName"] as? String
                         post.key = postDict["key"] as? String
+                        post.displayName = postDict["displayName"] as? String
                         posts.append(post)
                     }
                 }

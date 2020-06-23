@@ -30,6 +30,10 @@ class SignInViewController: UIViewController {
             Auth.auth().signIn(withEmail: username, password: password) { [weak self] authResult, error in
                 // if there are no errors with sign in
                 if error == nil {
+                    // update user singleton
+                    let currUser = Auth.auth().currentUser
+                    print("USER ID: \(currUser!.uid)")
+                    let _ = FirestoreApi.shared.findUser(key: "authID", value: currUser!.uid)
                     // move to the main page
                     self?.performSegue(withIdentifier: "signInToMain", sender: self)
                 } else {

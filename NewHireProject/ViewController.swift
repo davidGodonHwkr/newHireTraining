@@ -112,7 +112,8 @@ class TableViewController: UITableViewController {
            // let calendar = Calendar.current
             let currDate = date.string(format: "yyyy-MM-dd")
             // add it to singleton and database
-            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", currDate, "")
+            print("USER SINGLETON DISPLAY NAME: \((UserSingleton.shared.user?.displayName)!)")
+            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", currDate, "", (UserSingleton.shared.user?.displayName)!)
            // DbApi.shared.posts.append(newPost)
             DbApi.shared.create(postItem: newPost) { posts in
                 self.posts = posts
@@ -128,6 +129,7 @@ class TableViewController: UITableViewController {
         let firebaseAuth = Auth.auth()
         do {
           try firebaseAuth.signOut()
+            UserSingleton.shared.user = nil
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
         }
