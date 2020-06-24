@@ -18,10 +18,9 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         setUpView()
-        tableView.register(UINib(nibName: "TableViewCell1", bundle: nil), forCellReuseIdentifier: "TableViewCell1")
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
         DbApi.shared.read() { posts in
             DispatchQueue.main.async {[weak self] in
                 if let strongSelf = self {
@@ -36,9 +35,6 @@ class TableViewController: UITableViewController {
         } else {
             self.performSegue(withIdentifier: "mainToSignIn", sender: self)
         }
-        
-        // DbApi.shared.delete()
-        // DbApi.shared.update(authorRef: "ref2", field: "authorName", newValue: "Markus")
     }
 
     private func setUpView() {
@@ -53,17 +49,13 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   //     let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
         let post = posts[indexPath.row]
-//
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
+        
+        cell.authorLabel.text = post.authorName
+        cell.dateLabel.text = post.date
+        cell.postLabel.text = post.postName
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell1", for: indexPath) as! TableViewCell1
-        
-                cell.authorLabel.text = post.authorName
-                cell.dateLabel.text = post.date
-                cell.postLabel.text = post.postName
- //       cell.textLabel?.text = "\(post.authorName!) \(post.date!) \(post.postName!)"
-        
         return cell
     }
     
@@ -75,11 +67,12 @@ class TableViewController: UITableViewController {
         if (editingStyle == .delete) {
             // handle delete (by removing the data from your array and updating the tableview)
             DbApi.shared.delete(key: posts[indexPath.row].key) { posts in
-                self.posts = posts
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.posts = posts
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    self.tableView.reloadData()
+                }
             }
-         //   posts.remove(at: indexPath.row)
         }
     }
     
@@ -106,6 +99,9 @@ class TableViewController: UITableViewController {
         alertController.addTextField { textField in
             textField.placeholder = "post description"
         }
+        alertController.addTextField() { textField in
+            textField.placeholder = "author name"
+        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
             print("cancel action")
         }
@@ -113,17 +109,20 @@ class TableViewController: UITableViewController {
             print("ok action")
             let textfield1 = alertController.textFields![0]
             let textfield2 = alertController.textFields![1]
+            let textfield3 = alertController.textFields![2]
             // find current date
             let date = Date()
            // let calendar = Calendar.current
             let currDate = date.string(format: "yyyy-MM-dd")
             // add it to singleton and database
             print("USER SINGLETON DISPLAY NAME: \((UserSingleton.shared.user?.displayName)!)")
-            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", currDate, "", (UserSingleton.shared.user?.displayName)!)
+            let newPost = Posts(textfield3.text!, (UserSingleton.shared.user?.email)!, textfield1.text!, textfield2.text!, "author5", currDate, "", (UserSingleton.shared.user?.displayName)!)
            // DbApi.shared.posts.append(newPost)
             DbApi.shared.create(postItem: newPost) { posts in
-                self.posts = posts
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.posts = posts
+                    self.tableView.reloadData()
+                }
             }
         }
         alertController.addAction(cancelAction)
@@ -139,7 +138,6 @@ class TableViewController: UITableViewController {
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
         }
-//        self.dismiss(animated: true, completion: nil)
         self.performSegue(withIdentifier: "mainToSignIn", sender: self)
     }
 }

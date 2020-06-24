@@ -25,7 +25,6 @@ class FirestoreApi {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
-//        db.collection(collection).document("userID").setData(data)
     }
     func findUser(key: String, value: String) {
         var user: User!
@@ -42,7 +41,6 @@ class FirestoreApi {
                         let email = document.data()["email"]
                         user = User(e: email as! String, d: displayName as! String, a: authID as! String)
                         UserSingleton.shared.user = user
-                        //print("\(document.documentID) => \(document.data())")
                     }
                 }
         }

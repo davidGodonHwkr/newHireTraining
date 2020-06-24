@@ -35,13 +35,11 @@ class SignInViewController: UIViewController {
                     print("USER ID: \(currUser!.uid)")
                     let _ = FirestoreApi.shared.findUser(key: "authID", value: currUser!.uid)
                     // move to the main page
-                    //self?.performSegue(withIdentifier: "signInToMain", sender: self)
                     self?.dismiss(animated: true) {}
                 } else {
                     // print out error message
                     print("this is the error \(error.debugDescription)")
                 }
-                //print("THIS IS CURRENT USER: \(Auth.auth().currentUser?.uid)")
             }
         }
     }
@@ -55,10 +53,8 @@ class SignInViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "signInToMain" {
-          //  let secondVC: TableViewController = segue.destination as! TableViewController
         } else if segue.identifier == "signInToSignUp" {
             print("")
-          //  let secondVC: SignUpViewController = segue.destination as! SignUpViewController
         }
     }
     

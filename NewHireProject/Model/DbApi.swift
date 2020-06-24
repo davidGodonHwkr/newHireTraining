@@ -19,30 +19,13 @@ class DbApi {
         ref = Database.database().reference(withPath: "posts")
     }
     
-//    func create(authorName: String, authorEmail: String, postName: String, postDescription: String, authorRef: String, date: String) {
-//        // 1
-//        let postItem = Posts(authorName, authorEmail, postName, postDescription, authorRef, date)
-//
-//        // 2
-//        let postRef = self.ref.child(self.ref.childByAutoId().key!)
-//      //  let postRef = self.ref.child(authorRef.lowercased())
-//
-//        // 3
-//        postRef.setValue(postItem.toAnyObject())
-//    }
-    
     func create(postItem: Posts, completion: @escaping ([Posts]) -> ()) {
 //        // 1
-//        let postItem = Posts(authorName, authorEmail, postName, postDescription, authorRef, date)
         let keyValue = self.ref.childByAutoId().key!
         // add it to the array
         postItem.key = keyValue
-       // let newPostItem = postItem
-        //self.posts.append(newPostItem)
         // 2
         let postRef = self.ref.child(keyValue)
-        //let postRef = self.ref.child(postItem.authorRef.lowercased())
-        
         // 3
         postRef.setValue(postItem.toAnyObject())
         self.read() { posts in

@@ -38,7 +38,8 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signInAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "signUpToSignIn", sender: self)
+        //self.performSegue(withIdentifier: "signUpToSignIn", sender: self)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

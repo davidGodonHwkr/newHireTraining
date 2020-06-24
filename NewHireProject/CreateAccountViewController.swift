@@ -25,10 +25,8 @@ class CreateAccountViewController: UIViewController {
         if let name = displayNameTextField.text {
             FirestoreApi.shared.create(collection: "users", data: ["email": email!, "displayName": name, "authID": authID!], documentName: authID!)
             UserSingleton.shared.user = User(e: email!, d: name, a: authID!)
-            //self.performSegue(withIdentifier: "createAccountToMain", sender: self)
-            //self.dismiss(animated: true, completion: {})
-            //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//            self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            _ = navigationController?.popToRootViewController(animated: true)
         }
     }
     
