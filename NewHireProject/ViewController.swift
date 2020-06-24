@@ -22,18 +22,19 @@ class TableViewController: UITableViewController {
         
         setUpView()
         tableView.register(UINib(nibName: "TableViewCell1", bundle: nil), forCellReuseIdentifier: "TableViewCell1")
-//        DbApi.shared.create(authorName: "Jung", authorEmail: "email@email.com", postName: "hello", postDescription: "first post", authorRef: "ref", date: "today")
-//        DbApi.shared.create(authorName: "Choi", authorEmail: "email2@email.com", postName: "hi", postDescription: "second post", authorRef: "ref2", date: "tomorrow")
-        //DispatchQueue.main.async {
-            DbApi.shared.read() { posts in
-                DispatchQueue.main.async {[weak self] in
-                    if let strongSelf = self {
-                        strongSelf.posts = posts
-                        strongSelf.tableView.reloadData()
-                    }
+        DbApi.shared.read() { posts in
+            DispatchQueue.main.async {[weak self] in
+                if let strongSelf = self {
+                    strongSelf.posts = posts
+                    strongSelf.tableView.reloadData()
                 }
             }
-        //}
+        }
+        
+        if let currentUser = Auth.auth().currentUser {
+        } else {
+            self.performSegue(withIdentifier: "mainToSignIn", sender: self)
+        }
         
         // DbApi.shared.delete()
         // DbApi.shared.update(authorRef: "ref2", field: "authorName", newValue: "Markus")
@@ -87,9 +88,13 @@ class TableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secondVC: InfoViewController = segue.destination as! InfoViewController
-        secondVC.rowSelected = currentRow
-        secondVC.posts = self.posts
+        if segue.identifier == "InfoSegue" {
+            let secondVC: InfoViewController = segue.destination as! InfoViewController
+            secondVC.rowSelected = currentRow
+            secondVC.posts = self.posts
+        } else if segue.identifier == "mainToSignIn" {
+        }
+        
     }
     
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
@@ -133,7 +138,8 @@ class TableViewController: UITableViewController {
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
         }
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "mainToSignIn", sender: self)
     }
 }
 

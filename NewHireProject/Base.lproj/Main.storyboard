@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fqk-Lw-fbt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JXA-O8-hd6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -46,7 +46,7 @@
             <objects>
                 <viewController id="Wyk-1F-l04" customClass="SignInViewController" customModule="NewHireProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nuw-EQ-moZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cTT-g0-ZTO">
@@ -109,7 +109,6 @@
                         <outlet property="signUpButton" destination="kgc-MK-VhN" id="1M8-uh-8De"/>
                         <outlet property="usernameTextField" destination="cTT-g0-ZTO" id="hu6-10-gzu"/>
                         <segue destination="hfc-I6-aMq" kind="show" identifier="signInToSignUp" id="35g-hQ-MdI"/>
-                        <segue destination="JXA-O8-hd6" kind="show" identifier="signInToMain" id="Q8f-V9-UP4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETL-9S-cVB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -276,6 +275,7 @@
                         <outlet property="addButton" destination="uPm-s2-Wqm" id="R1V-ML-9WI"/>
                         <outlet property="signOutButton" destination="Ltw-Rp-5nP" id="Lhd-aG-sw4"/>
                         <segue destination="46v-Fc-syP" kind="show" identifier="InfoSegue" id="ldJ-2X-ZNR"/>
+                        <segue destination="Wyk-1F-l04" kind="presentation" identifier="mainToSignIn" id="hWd-Rk-8fV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgE-Ng-KKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -301,6 +301,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Lmg-cR-xTr"/>
-        <segue reference="vyr-7D-niO"/>
+        <segue reference="hWd-Rk-8fV"/>
     </inferredMetricsTieBreakers>
 </document>

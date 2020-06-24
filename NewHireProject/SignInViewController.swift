@@ -35,7 +35,8 @@ class SignInViewController: UIViewController {
                     print("USER ID: \(currUser!.uid)")
                     let _ = FirestoreApi.shared.findUser(key: "authID", value: currUser!.uid)
                     // move to the main page
-                    self?.performSegue(withIdentifier: "signInToMain", sender: self)
+                    //self?.performSegue(withIdentifier: "signInToMain", sender: self)
+                    self?.dismiss(animated: true) {}
                 } else {
                     // print out error message
                     print("this is the error \(error.debugDescription)")
@@ -48,6 +49,7 @@ class SignInViewController: UIViewController {
     @IBAction func toSignUpPage(_ sender: Any) {
         print("HELOEOEOEOEOEOEOEO")
         self.performSegue(withIdentifier: "signInToSignUp", sender: self)
+        //self.dismiss(animated: false) {}
     }
     
     
