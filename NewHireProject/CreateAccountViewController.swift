@@ -27,7 +27,8 @@ class CreateAccountViewController: UIViewController {
             UserSingleton.shared.user = User(e: email!, d: name, a: authID!)
             //self.performSegue(withIdentifier: "createAccountToMain", sender: self)
             //self.dismiss(animated: true, completion: {})
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            //self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         }
     }
     

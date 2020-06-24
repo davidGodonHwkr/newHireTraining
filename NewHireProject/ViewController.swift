@@ -32,6 +32,7 @@ class TableViewController: UITableViewController {
         }
         
         if let currentUser = Auth.auth().currentUser {
+            let _ = FirestoreApi.shared.findUser(key: "authID", value: currentUser.uid)
         } else {
             self.performSegue(withIdentifier: "mainToSignIn", sender: self)
         }
