@@ -77,6 +77,11 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // check if user is signed in
+        if Auth.auth().currentUser == nil {
+            self.performSegue(withIdentifier: "mainToSignIn", sender: self)
+            return
+        }
         currentRow = indexPath.row
         self.performSegue(withIdentifier: "InfoSegue", sender: self)
     }
@@ -92,6 +97,12 @@ class TableViewController: UITableViewController {
     }
     
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+        // check if user is signed in
+        if Auth.auth().currentUser == nil {
+            self.performSegue(withIdentifier: "mainToSignIn", sender: self)
+            return
+        }
+        
         let alertController = UIAlertController(title: "Create Post", message: "Please fill in inputs", preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "post name"
