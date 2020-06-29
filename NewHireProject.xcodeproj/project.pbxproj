@@ -11,10 +11,17 @@
 		5139987E24904EFC0034693F /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5139987D24904EFC0034693F /* InfoView.xib */; };
 		5139988024904F0C0034693F /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5139987F24904F0C0034693F /* InfoView.swift */; };
 		513998822490503A0034693F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513998812490503A0034693F /* InfoViewController.swift */; };
+		515A24192499671D00C4EE64 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515A24182499671D00C4EE64 /* User.swift */; };
+		515A241B24996C2D00C4EE64 /* FirestoreApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515A241A24996C2D00C4EE64 /* FirestoreApi.swift */; };
+		515A241D24997DD500C4EE64 /* UserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515A241C24997DD500C4EE64 /* UserSingleton.swift */; };
+		515A241F2499955000C4EE64 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515A241E2499955000C4EE64 /* CreateAccountViewController.swift */; };
+		515A242124999E1000C4EE64 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515A242024999E1000C4EE64 /* Utility.swift */; };
 		516D08D2248EDF7A00EA155A /* DbApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08D1248EDF7A00EA155A /* DbApi.swift */; };
 		516D08D6248EE8FA00EA155A /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08D5248EE8FA00EA155A /* Posts.swift */; };
-		516D08DD248F1F4300EA155A /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08DB248F1F4300EA155A /* TableViewCell1.swift */; };
-		516D08DE248F1F4300EA155A /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516D08DC248F1F4300EA155A /* TableViewCell1.xib */; };
+		516D08DD248F1F4300EA155A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516D08DB248F1F4300EA155A /* CustomTableViewCell.swift */; };
+		516D08DE248F1F4300EA155A /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516D08DC248F1F4300EA155A /* CustomTableViewCell.xib */; };
+		51C7113A2498465000AF2EC2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C711392498465000AF2EC2 /* SignInViewController.swift */; };
+		51C7113C24985E1400AF2EC2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C7113B24985E1400AF2EC2 /* SignUpViewController.swift */; };
 		56FF8B93EAFDE9986FB9DF88 /* Pods_NewHireProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEEB58D6E6066E468C8376AB /* Pods_NewHireProject.framework */; };
 		6F0BB6CE2487E3E200045139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BB6CD2487E3E200045139 /* AppDelegate.swift */; };
 		6F0BB6D02487E3E200045139 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BB6CF2487E3E200045139 /* SceneDelegate.swift */; };
@@ -29,10 +36,17 @@
 		5139987D24904EFC0034693F /* InfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		5139987F24904F0C0034693F /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		513998812490503A0034693F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		515A24182499671D00C4EE64 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		515A241A24996C2D00C4EE64 /* FirestoreApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreApi.swift; sourceTree = "<group>"; };
+		515A241C24997DD500C4EE64 /* UserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSingleton.swift; sourceTree = "<group>"; };
+		515A241E2499955000C4EE64 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		515A242024999E1000C4EE64 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		516D08D1248EDF7A00EA155A /* DbApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbApi.swift; sourceTree = "<group>"; };
 		516D08D5248EE8FA00EA155A /* Posts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
-		516D08DB248F1F4300EA155A /* TableViewCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
-		516D08DC248F1F4300EA155A /* TableViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
+		516D08DB248F1F4300EA155A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		516D08DC248F1F4300EA155A /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		51C711392498465000AF2EC2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		51C7113B24985E1400AF2EC2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6F0BB6CA2487E3E200045139 /* NewHireProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewHireProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0BB6CD2487E3E200045139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F0BB6CF2487E3E200045139 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +80,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		515A2417249966E500C4EE64 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				516D08D5248EE8FA00EA155A /* Posts.swift */,
+				516D08D1248EDF7A00EA155A /* DbApi.swift */,
+				515A24182499671D00C4EE64 /* User.swift */,
+				515A241A24996C2D00C4EE64 /* FirestoreApi.swift */,
+				515A241C24997DD500C4EE64 /* UserSingleton.swift */,
+				515A242024999E1000C4EE64 /* Utility.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6F0BB6C12487E3E200045139 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +114,7 @@
 		6F0BB6CC2487E3E200045139 /* NewHireProject */ = {
 			isa = PBXGroup;
 			children = (
+				515A2417249966E500C4EE64 /* Model */,
 				5110D25424881B4100ADAA88 /* GoogleService-Info.plist */,
 				6F0BB6CD2487E3E200045139 /* AppDelegate.swift */,
 				6F0BB6CF2487E3E200045139 /* SceneDelegate.swift */,
@@ -95,13 +123,14 @@
 				6F0BB6D62487E3E300045139 /* Assets.xcassets */,
 				6F0BB6D82487E3E300045139 /* LaunchScreen.storyboard */,
 				6F0BB6DB2487E3E300045139 /* Info.plist */,
-				516D08D1248EDF7A00EA155A /* DbApi.swift */,
-				516D08D5248EE8FA00EA155A /* Posts.swift */,
-				516D08DB248F1F4300EA155A /* TableViewCell1.swift */,
-				516D08DC248F1F4300EA155A /* TableViewCell1.xib */,
+				516D08DB248F1F4300EA155A /* CustomTableViewCell.swift */,
+				516D08DC248F1F4300EA155A /* CustomTableViewCell.xib */,
 				5139987D24904EFC0034693F /* InfoView.xib */,
 				5139987F24904F0C0034693F /* InfoView.swift */,
 				513998812490503A0034693F /* InfoViewController.swift */,
+				51C711392498465000AF2EC2 /* SignInViewController.swift */,
+				51C7113B24985E1400AF2EC2 /* SignUpViewController.swift */,
+				515A241E2499955000C4EE64 /* CreateAccountViewController.swift */,
 			);
 			path = NewHireProject;
 			sourceTree = "<group>";
@@ -176,7 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5139987E24904EFC0034693F /* InfoView.xib in Resources */,
-				516D08DE248F1F4300EA155A /* TableViewCell1.xib in Resources */,
+				516D08DE248F1F4300EA155A /* CustomTableViewCell.xib in Resources */,
 				6F0BB6DA2487E3E300045139 /* LaunchScreen.storyboard in Resources */,
 				5110D25524881B4200ADAA88 /* GoogleService-Info.plist in Resources */,
 				6F0BB6D72487E3E300045139 /* Assets.xcassets in Resources */,
@@ -233,14 +262,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				515A241F2499955000C4EE64 /* CreateAccountViewController.swift in Sources */,
+				515A241D24997DD500C4EE64 /* UserSingleton.swift in Sources */,
 				6F0BB6D22487E3E200045139 /* ViewController.swift in Sources */,
 				516D08D6248EE8FA00EA155A /* Posts.swift in Sources */,
 				6F0BB6CE2487E3E200045139 /* AppDelegate.swift in Sources */,
-				516D08DD248F1F4300EA155A /* TableViewCell1.swift in Sources */,
+				515A242124999E1000C4EE64 /* Utility.swift in Sources */,
+				516D08DD248F1F4300EA155A /* CustomTableViewCell.swift in Sources */,
+				51C7113C24985E1400AF2EC2 /* SignUpViewController.swift in Sources */,
 				516D08D2248EDF7A00EA155A /* DbApi.swift in Sources */,
+				515A241B24996C2D00C4EE64 /* FirestoreApi.swift in Sources */,
+				51C7113A2498465000AF2EC2 /* SignInViewController.swift in Sources */,
 				6F0BB6D02487E3E200045139 /* SceneDelegate.swift in Sources */,
 				513998822490503A0034693F /* InfoViewController.swift in Sources */,
 				5139988024904F0C0034693F /* InfoView.swift in Sources */,
+				515A24192499671D00C4EE64 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

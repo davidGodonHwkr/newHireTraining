@@ -7,33 +7,34 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class TableViewController: UITableViewController {
     var currentRow: Int! = 0
+    @IBOutlet weak var signOutButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
     var posts = [Posts]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         setUpView()
-        tableView.register(UINib(nibName: "TableViewCell1", bundle: nil), forCellReuseIdentifier: "TableViewCell1")
-//        DbApi.shared.create(authorName: "Jung", authorEmail: "email@email.com", postName: "hello", postDescription: "first post", authorRef: "ref", date: "today")
-//        DbApi.shared.create(authorName: "Choi", authorEmail: "email2@email.com", postName: "hi", postDescription: "second post", authorRef: "ref2", date: "tomorrow")
-        //DispatchQueue.main.async {
-            DbApi.shared.read() { posts in
-                DispatchQueue.main.async {[weak self] in
-                    if let strongSelf = self {
-                        strongSelf.posts = posts
-                        strongSelf.tableView.reloadData()
-                    }
+        tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "CustomTableViewCell")
+        DbApi.shared.read() { posts in
+            DispatchQueue.main.async {[weak self] in
+                if let strongSelf = self {
+                    strongSelf.posts = posts
+                    strongSelf.tableView.reloadData()
                 }
             }
-        //}
+        }
         
-        // DbApi.shared.delete()
-        // DbApi.shared.update(authorRef: "ref2", field: "authorName", newValue: "Markus")
+        if let currentUser = Auth.auth().currentUser {
+            let _ = FirestoreApi.shared.findUser(key: "authID", value: currentUser.uid)
+        } else {
+            self.performSegue(withIdentifier: "mainToSignIn", sender: self)
+        }
     }
 
     private func setUpView() {
@@ -48,17 +49,13 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   //     let cell = Bundle.main.loadNibNamed("TableViewCell1", owner: self, options: nil)?.first as! TableViewCell1
         let post = posts[indexPath.row]
-//
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
+        
+        cell.authorLabel.text = post.authorName
+        cell.dateLabel.text = post.date
+        cell.postLabel.text = post.postName
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell1", for: indexPath) as! TableViewCell1
-        
-                cell.authorLabel.text = post.authorName
-                cell.dateLabel.text = post.date
-                cell.postLabel.text = post.postName
- //       cell.textLabel?.text = "\(post.authorName!) \(post.date!) \(post.postName!)"
-        
         return cell
     }
     
@@ -70,32 +67,51 @@ class TableViewController: UITableViewController {
         if (editingStyle == .delete) {
             // handle delete (by removing the data from your array and updating the tableview)
             DbApi.shared.delete(key: posts[indexPath.row].key) { posts in
-                self.posts = posts
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.posts = posts
+                    self.tableView.deleteRows(at: [indexPath], with: .fade)
+                    self.tableView.reloadData()
+                }
             }
-         //   posts.remove(at: indexPath.row)
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // check if user is signed in
+        if Auth.auth().currentUser == nil {
+            self.performSegue(withIdentifier: "mainToSignIn", sender: self)
+            return
+        }
         currentRow = indexPath.row
         self.performSegue(withIdentifier: "InfoSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secondVC: InfoViewController = segue.destination as! InfoViewController
-        secondVC.rowSelected = currentRow
-        secondVC.posts = self.posts
+        if segue.identifier == "InfoSegue" {
+            let secondVC: InfoViewController = segue.destination as! InfoViewController
+            secondVC.rowSelected = currentRow
+            secondVC.posts = self.posts
+        } else if segue.identifier == "mainToSignIn" {
+        }
+        
     }
     
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+        // check if user is signed in
+        if Auth.auth().currentUser == nil {
+            self.performSegue(withIdentifier: "mainToSignIn", sender: self)
+            return
+        }
+        
         let alertController = UIAlertController(title: "Create Post", message: "Please fill in inputs", preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "post name"
         }
         alertController.addTextField { textField in
             textField.placeholder = "post description"
+        }
+        alertController.addTextField() { textField in
+            textField.placeholder = "author name"
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
             print("cancel action")
@@ -104,17 +120,36 @@ class TableViewController: UITableViewController {
             print("ok action")
             let textfield1 = alertController.textFields![0]
             let textfield2 = alertController.textFields![1]
+            let textfield3 = alertController.textFields![2]
+            // find current date
+            let date = Date()
+           // let calendar = Calendar.current
+            let currDate = date.string(format: "yyyy-MM-dd")
             // add it to singleton and database
-            let newPost = Posts("jung", "choi", textfield1.text!, textfield2.text!, "author5", "today", "")
+            print("USER SINGLETON DISPLAY NAME: \((UserSingleton.shared.user?.displayName)!)")
+            let newPost = Posts(textfield3.text!, (UserSingleton.shared.user?.email)!, textfield1.text!, textfield2.text!, "author5", currDate, "", (UserSingleton.shared.user?.displayName)!)
            // DbApi.shared.posts.append(newPost)
             DbApi.shared.create(postItem: newPost) { posts in
-                self.posts = posts
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.posts = posts
+                    self.tableView.reloadData()
+                }
             }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func clickedSignOut(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            UserSingleton.shared.user = nil
+        } catch let signOutError as NSError {
+          print ("Error signing out: %@", signOutError)
+        }
+        self.performSegue(withIdentifier: "mainToSignIn", sender: self)
     }
 }
 

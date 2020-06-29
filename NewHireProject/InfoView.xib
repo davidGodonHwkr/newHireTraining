@@ -44,6 +44,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="displayName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xf3-lj-m8I">
+                    <rect key="frame" x="5" y="239" width="99" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -52,10 +58,12 @@
                 <constraint firstItem="fKw-wO-ntV" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="15" id="Ij3-gs-yan"/>
                 <constraint firstItem="39W-8a-zHx" firstAttribute="top" secondItem="30A-27-M2W" secondAttribute="bottom" constant="15" id="J7x-pD-cos"/>
                 <constraint firstItem="y53-gy-tPO" firstAttribute="top" secondItem="39W-8a-zHx" secondAttribute="bottom" constant="15" id="KRa-EW-dLm"/>
+                <constraint firstItem="Xf3-lj-m8I" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="Lfr-LN-H2W"/>
                 <constraint firstItem="30A-27-M2W" firstAttribute="top" secondItem="BuW-wg-tbx" secondAttribute="bottom" constant="15" id="R6e-3z-7Dz"/>
                 <constraint firstItem="BuW-wg-tbx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="WLf-EK-oIo"/>
                 <constraint firstItem="fKw-wO-ntV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="dEw-QE-Isx"/>
                 <constraint firstItem="39W-8a-zHx" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="tQB-fH-JHH"/>
+                <constraint firstItem="Xf3-lj-m8I" firstAttribute="top" secondItem="y53-gy-tPO" secondAttribute="bottom" constant="15" id="uiu-d4-YVD"/>
                 <constraint firstItem="BuW-wg-tbx" firstAttribute="top" secondItem="fKw-wO-ntV" secondAttribute="bottom" constant="15" id="yQs-4F-A4j"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -64,9 +72,10 @@
                 <outlet property="authorNameLabel" destination="39W-8a-zHx" id="eUr-Tt-EAf"/>
                 <outlet property="dateLabel" destination="30A-27-M2W" id="gI6-nQ-rAj"/>
                 <outlet property="descriptionLabel" destination="BuW-wg-tbx" id="44c-ag-V91"/>
+                <outlet property="displayNameLabel" destination="Xf3-lj-m8I" id="5OC-0l-o5j"/>
                 <outlet property="postNameLabel" destination="fKw-wO-ntV" id="5Bs-cg-y4d"/>
             </connections>
-            <point key="canvasLocation" x="139" y="83"/>
+            <point key="canvasLocation" x="137.68115942028987" y="82.366071428571431"/>
         </view>
     </objects>
 </document>
