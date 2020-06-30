@@ -25,19 +25,7 @@ class CreateAccountViewController: UIViewController {
         if let name = displayNameTextField.text {
             FirestoreApi.shared.create(collection: "users", data: ["email": email!, "displayName": name, "authID": authID!], documentName: authID!)
             UserSingleton.shared.user = User(e: email!, d: name, a: authID!)
-//            self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-            _ = navigationController?.popToRootViewController(animated: true)
+            self.presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

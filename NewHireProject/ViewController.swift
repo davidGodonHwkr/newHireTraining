@@ -114,10 +114,8 @@ class TableViewController: UITableViewController {
             textField.placeholder = "author name"
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
-            print("cancel action")
         }
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            print("ok action")
             let textfield1 = alertController.textFields![0]
             let textfield2 = alertController.textFields![1]
             let textfield3 = alertController.textFields![2]
@@ -126,9 +124,7 @@ class TableViewController: UITableViewController {
            // let calendar = Calendar.current
             let currDate = date.string(format: "yyyy-MM-dd")
             // add it to singleton and database
-            print("USER SINGLETON DISPLAY NAME: \((UserSingleton.shared.user?.displayName)!)")
             let newPost = Posts(textfield3.text!, (UserSingleton.shared.user?.email)!, textfield1.text!, textfield2.text!, "author5", currDate, "", (UserSingleton.shared.user?.displayName)!)
-           // DbApi.shared.posts.append(newPost)
             DbApi.shared.create(postItem: newPost) { posts in
                 DispatchQueue.main.async {
                     self.posts = posts
@@ -147,7 +143,6 @@ class TableViewController: UITableViewController {
           try firebaseAuth.signOut()
             UserSingleton.shared.user = nil
         } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
         }
         self.performSegue(withIdentifier: "mainToSignIn", sender: self)
     }

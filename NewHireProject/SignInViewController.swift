@@ -32,22 +32,18 @@ class SignInViewController: UIViewController {
                 if error == nil {
                     // update user singleton
                     let currUser = Auth.auth().currentUser
-                    print("USER ID: \(currUser!.uid)")
                     let _ = FirestoreApi.shared.findUser(key: "authID", value: currUser!.uid)
                     // move to the main page
-                    self?.dismiss(animated: true) {}
+                    self?.dismiss(animated: true, completion: nil)
                 } else {
                     // print out error message
-                    print("this is the error \(error.debugDescription)")
                 }
             }
         }
     }
     
     @IBAction func toSignUpPage(_ sender: Any) {
-        print("HELOEOEOEOEOEOEOEO")
         self.performSegue(withIdentifier: "signInToSignUp", sender: self)
-        //self.dismiss(animated: false) {}
     }
     
     
@@ -57,15 +53,5 @@ class SignInViewController: UIViewController {
             print("")
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
